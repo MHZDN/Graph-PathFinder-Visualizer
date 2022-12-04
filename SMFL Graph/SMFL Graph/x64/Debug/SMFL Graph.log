@@ -1,28 +1,4 @@
-﻿  Grid.cpp
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(7,41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(8,43): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(9,24): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(13,23): warning C4244: '=': conversion from 'float' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(13,53): warning C4244: '=': conversion from 'float' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(23,23): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(24,23): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(25,23): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(26,23): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(27,23): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(31,30): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(32,31): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(91,35): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(93,31): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(107,36): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Grid.cpp(110,32): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-  Source.cpp
-  Generating Code...
+﻿  Application.cpp
+C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Application.cpp(6,54): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Application.cpp(6,40): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
   SMFL Graph.vcxproj -> C:\Users\vip\source\repos\SMFL Graph\x64\Debug\SMFL Graph.exe

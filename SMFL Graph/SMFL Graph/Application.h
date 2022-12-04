@@ -1,5 +1,5 @@
 #pragma once
-#include"Grid.h"
+#include"Graph.h"
 using namespace std;
 class Application
 {

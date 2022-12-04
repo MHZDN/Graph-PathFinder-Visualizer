@@ -6,6 +6,8 @@ Application::Application(float window_width, float window_height, float square_d
 	sf::RenderWindow window(sf::VideoMode(window_width, window_height), "Graph PathFining Visualizer", sf::Style::Close);
 	window.setKeyRepeatEnabled(false);
 	Grid G1(window_width, window_height, square_dimention,m, window);
+	Graph graph(G1);
+	//graph.showNodeandNeghbours();
 	G1.DrawGrid();
 	
 }

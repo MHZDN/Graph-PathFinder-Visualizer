@@ -1,5 +1,5 @@
 #include "Grid.h"
-#include<iostream>
+
 
 Grid::Grid(float window_width, float window_height, float square_dimention, sf::Mouse& mouse , sf::RenderWindow& window)
 	:window_width(window_width), window_height(window_height), square_dimention(square_dimention), mouse(mouse), window(window)
@@ -9,6 +9,7 @@ Grid::Grid(float window_width, float window_height, float square_dimention, sf::
 	TileMap.resize(xtiles * ytiles);
 	
 	//intialization for start and taregt
+	it = Obstaclespos.begin();
 	Startpos = {0,0};                            //start index
 	Targetpos.x = xtiles - 1;     Targetpos.y = ytiles - 1; //target index
 
@@ -22,7 +23,7 @@ Grid::Grid(float window_width, float window_height, float square_dimention, sf::
 		{
 			TileMap[i * xtiles + j].setSize(sf::Vector2f(square_dimention, square_dimention));
 			TileMap[i * xtiles + j].setPosition(i*square_dimention,j*square_dimention);
-			TileMap[i * xtiles + j].setFillColor(sf::Color::Blue);
+			TileMap[i * xtiles + j].setFillColor(DefaultColor);
 			TileMap[i * xtiles + j].setOutlineThickness(1);
 			TileMap[i * xtiles + j].setOutlineColor(sf::Color::Black);
 
@@ -66,6 +67,10 @@ void Grid::DrawGrid()
 				setTarget();
 			}
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::O))
+		{
+			setObstacle();
+		}
 		
 		window.display();
 
@@ -82,15 +87,26 @@ sf::Vector2i Grid::getmousepostition()
 	return Mousepos;
 }
 
+sf::Color Grid::getTilecolor(sf::Vector2i pos)
+{
+	return 	TileMap[pos.x * xtiles + pos.y].getFillColor();
+
+}
+
+void Grid::setTilecolor(sf::Vector2i pos, sf::Color color)
+{
+	TileMap[pos.x * xtiles + pos.y].setFillColor(color);
+}
+
 void Grid::setStart()
 {
 		getmousepostition();
 		Startpos.x = static_cast<int>(Mousepos.x / square_dimention);
 		Startpos.y = static_cast<int>(Mousepos.y / square_dimention);
 		
-		TileMap[prevStartpos.x * xtiles + prevStartpos.y].setFillColor(DefaultColor); //reset old start
+		setTilecolor(prevStartpos, DefaultColor); //reset old start
 
-		TileMap[Startpos.x * xtiles + Startpos.y].setFillColor(StartColor); // set new start
+		setTilecolor(Startpos, StartColor); // set new start
 
 		prevStartpos = { Startpos.x ,Startpos.y };  //setting new previous
 
@@ -104,10 +120,67 @@ void Grid::setTarget()
 		Targetpos.x = static_cast<int>( Mousepos.x / square_dimention);
 		Targetpos.y = static_cast<int>( Mousepos.y / square_dimention);
 		
-		TileMap[prevTargetpos.x * xtiles + prevTargetpos.y].setFillColor(DefaultColor); //reset old target
+		setTilecolor(prevTargetpos, DefaultColor);  		 //reset old target
 
+		setTilecolor(Targetpos, targetColor);				 // set new target
 
-		TileMap[Targetpos.x * xtiles + Targetpos.y].setFillColor(targetColor); // set new target
 
 		prevTargetpos = { Targetpos.x ,Targetpos.y };     //setting new previous
+}
+
+void Grid::setObstacle()
+{
+	getmousepostition();
+	sf::Vector2i obstaclepos = { static_cast<int>(Mousepos.x / square_dimention) ,static_cast<int>(Mousepos.y / square_dimention )};
+	if (getTilecolor(obstaclepos) == obstacleColor)
+	{
+		return;
+	}
+	Obstaclespos.emplace_back(obstaclepos);
+	setTilecolor(obstaclepos, obstacleColor);
+	
+}
+
+int Grid::getXtiles()
+{
+	return static_cast<int>(xtiles);
+}
+
+int Grid::getYtiles()
+{
+	return static_cast<int>(ytiles);
+}
+
+int Grid::getNumtiles()
+{
+	return static_cast<int>(xtiles*ytiles);
+}
+
+float Grid::getsquareDim()
+{
+	return square_dimention;
+}
+
+
+
+
+
+vector<sf::RectangleShape> Grid::getTileMap() 
+{
+	return TileMap;
+}
+
+sf::Vector2i Grid::getstart()
+{
+	return Startpos;
+}
+
+sf::Vector2i Grid::getTarget()
+{
+	return Targetpos;
+}
+
+sf::RenderWindow& Grid::getwindow()
+{
+	return window;
 }
