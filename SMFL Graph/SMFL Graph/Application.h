@@ -1,5 +1,7 @@
 #pragma once
-#include"Graph.h"
+#include"BFS.h"
+#include"DFS.h"
+
 using namespace std;
 class Application
 {

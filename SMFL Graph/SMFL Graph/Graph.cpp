@@ -82,6 +82,7 @@ Graph::Graph(Grid& grid)
 			nodes[i].neighbours.emplace_back(&nodes[i - Ytiles - 1]);
 		}
 	}
+	//setObstacles();
 }
 
 vector<Graph::node*> Graph::getneighbours(node n)
@@ -89,66 +90,48 @@ vector<Graph::node*> Graph::getneighbours(node n)
 	return n.neighbours;
 }
 
-Graph::node Graph::getnode(int x, int y)
+Graph::node& Graph::getnode(int x, int y)
 {
 	return nodes[x * G1.getXtiles() + y];
 }
 
-void Graph::showNodeandNeghbours()
+
+Grid& Graph::getGrid()
 {
-	sf::Event event;
-	while (G1.getwindow().isOpen())
+	return G1;
+}
+
+void Graph::setObstacles()
+{
+	sf::Color o= sf::Color::Black;
+	for (int i = 0; i < G1.getNumtiles(); i++)
 	{
-		while (G1.getwindow().pollEvent(event))
+		if (G1.getTileMap()[i].getFillColor() == o)
 		{
-			switch (event.type)
-			{
-			case(sf::Event::Closed):
-				G1.getwindow().close();
-				break;
-
-			}
-
-
+			nodes[i].obstacle = true;
 		}
-		for (int i = 0; i < G1.getXtiles() * G1.getYtiles(); i++)
-		{
-			G1.getwindow().draw(G1.getTileMap()[i]);
-		}
-		if (event.type == sf::Event::MouseButtonPressed)
-		{
-			if (event.key.code == sf::Mouse::Left)
-			{
-				G1.setStart();
-			}
-			else if (event.key.code == sf::Mouse::Right)
-			{
-				G1.setTarget();
-			}
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::O))
-		{
-			G1.setObstacle();
-		}
+	}
+}
 
+void Graph::isObstacle()
+{
+	vector<sf::RectangleShape> Tilemap = G1.getTileMap();
+	if (nodes[G1.getIndex()].obstacle)
+	{
+		cout << "True";
+	}
+	else { cout << "False"; }
+
+
+}
+
+void Graph::resetGraph()
+{
+	for (auto& node : nodes)
+	{
+		node.visited = false;
+		node.obstacle = false;
 		
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::N))
-		{
-			int xmous = G1.getmousepostition().x/G1.getsquareDim(); int ymous = G1.getmousepostition().y/G1.getsquareDim();
-			node n = nodes[xmous * G1.getXtiles() + ymous];
-			cout << "my pos: " << n.x << "  " << n.y << "\n";
-			/*for (vector<node*>::iterator it = n.neighbours.begin(); it < n.neighbours.end(); it++)
-			{
-				cout<< **it.;
-			}*/
-			cout << "neighbours:\n";
-			for (int i = 0; i < n.neighbours.size(); i++)
-			{
-				cout << (n.neighbours[i]->x) << " " << (n.neighbours[i]->y)<<"\n";
-			}
-
-		}
-		G1.getwindow().display();
 	}
 }
 

@@ -1,4 +1,2 @@
-﻿  Application.cpp
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Application.cpp(6,54): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\vip\source\repos\SMFL Graph\SMFL Graph\Application.cpp(6,40): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+﻿  DFS.cpp
   SMFL Graph.vcxproj -> C:\Users\vip\source\repos\SMFL Graph\x64\Debug\SMFL Graph.exe
